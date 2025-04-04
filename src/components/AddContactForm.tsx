@@ -9,8 +9,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import swal from 'sweetalert';
 import { redirect } from 'next/navigation';
 import { addContact } from '@/lib/dbActions';
-import LoadingSpinner from '@/components/LoadingSpinner';
 import { AddContactSchema } from '@/lib/validationSchemas';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 const onSubmit = async (data: {
   firstName: string,

@@ -44,6 +44,15 @@ model Stuff {
   owner     String
 }
 
+model Note {
+  id        Int      @id @default(autoincrement())
+  contactId Int
+  note      String
+  owner     String
+  createdAt DateTime @default(now())
+  Contact   Contact  @relation(fields: [contactId], references: [id])
+}
+
 model Contact {
   id Int @id @default(autoincrement())
   firstName String
@@ -51,5 +60,6 @@ model Contact {
   address String
   image String
   description String
+  notes Note[]
   owner String
 }
