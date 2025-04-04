@@ -23,7 +23,7 @@ async function main() {
   });
   for (const data of config.defaultData) {
     const condition = data.condition as Condition || Condition.good;
-    console.log(`  Adding stuff: ${JSON.stringify(data)}`);
+    console.log(`  Adding stuff: ${data.name} (${data.owner})`);
     // eslint-disable-next-line no-await-in-loop
     await prisma.stuff.upsert({
       where: { id: config.defaultData.indexOf(data) + 1 },
@@ -33,6 +33,22 @@ async function main() {
         quantity: data.quantity,
         owner: data.owner,
         condition,
+      },
+    });
+  }
+  for (const contact of config.defaultContacts) {
+    console.log(`  Adding contact: ${contact.firstName} ${contact.lastName}`);
+    // eslint-disable-next-line no-await-in-loop
+    await prisma.contact.upsert({
+      where: { id: config.defaultContacts.indexOf(contact) + 1 },
+      update: {},
+      create: {
+        firstName: contact.firstName,
+        lastName: contact.lastName,
+        address: contact.address,
+        image: contact.image,
+        description: contact.description,
+        owner: contact.owner,
       },
     });
   }
