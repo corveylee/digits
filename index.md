@@ -1,24 +1,6 @@
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/landing-page.png)
+<img src="doc/landing.png">
 
-nextjs-application-template is a sample Next.js 14 application that illustrates:
-
-- A standard directory layout using 'src/' as recommended in the [Next.js Project Structure](https://nextjs.org/docs/getting-started/project-structure) guide.
-- [Bootstrap 5 React](https://react-bootstrap.github.io/) for user interface.
-- [React Hook Form](https://www.react-hook-form.com/) for form development.
-- Authorization, authentication, and registration using [NextAuth.js](https://next-auth.js.org/).
-- Initialization of users and data from a settings file.
-- Alerts regarding success or failure of DB updates using [Sweet Alert](https://sweetalert.js.org/).
-- Quality assurance using [ESLint](http://eslint.org) with packages to partially enforce the [Next.js ESLint rules](https://nextjs.org/docs/app/building-your-application/configuring/eslint) and the [AirBnB Javascript Style Guide](https://github.com/airbnb/javascript).
-
-The goal of this template is to help you get quickly started doing Next.js development by providing a reasonable directory structure for development and deployment, a set of common extensions to the core framework, and boilerplate code to implement basic page display, navigation, forms, roles, and database manipulation.
-
-To keep this codebase simple and small, some important capabilities are intentionally excluded from this template:
-
-- Unit Testing
-- Security
-- Deployment
-
-Examples of the these capabilities will be provided elsewhere.
+Digits is a project that allows users to register for an account and store and add contacts, as well as posting notes about them. All notes are timestamped so that you are able to track when you posted it. Only you can see your added contacts, and you may also put notes on them as well. An admin role is available to see all contacts added by all users. 
 
 ## Installation
 
@@ -32,11 +14,9 @@ $
 
 ```
 
-Second, go to [https://github.com/ics-software-engineering/nextjs-application-template](https://github.com/ics-software-engineering/nextjs-application-template), and click the "Use this template" button. Complete the dialog box to create a new repository that you own that is initialized with this template's files.
+Second, [download a copy of Digits](https://github.com/corveylee/digits). Since digits is currently a private repo, permission is only given to those that have contacted the owner. 
 
-Third, go to your newly created repository, and click the "Clone or download" button to download your new GitHub repo to your local file system. Using [GitHub Desktop](https://desktop.github.com/) is a great choice if you use MacOS or Windows.
-
-Fourth, cd into the directory of your local copy of the repo, and install third party libraries with:
+Third, cd into the app directory and install the libraries with 
 
 ```
 
@@ -79,11 +59,9 @@ Running seed command `ts-node --compiler-options {"module":"CommonJS"} prisma/se
 Seeding the database
 Creating user: admin@foo.com with role: ADMIN
 Creating user: john@foo.com with role: USER
-Adding stuff: Basket (john@foo.com)
-Adding stuff: Bicycle (john@foo.com)
-Adding stuff: Banana (admin@foo.com)
-Adding stuff: Boogie Board (admin@foo.com)
-
+Adding contact: Philip Johnson
+Adding contact: Henri Casanova
+Adding contact: Kim Binstead
 🌱 The seed command has been executed.
 $
 
@@ -108,24 +86,6 @@ $ npm run dev
 ✓ Starting...
 ✓ Ready in 1619ms
 
-```
-
-### Viewing the running app
-
-If all goes well, the template application will appear at [http://localhost:3000](http://localhost:3000). You can login using the credentials in [settings.development.json](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/config/settings.development.json), or else register a new account.
-
-### ESLint
-
-You can verify that the code obeys our coding standards by running ESLint over the code in the src/ directory with:
-
-```
-$ npm run lint
-
-> nextjs-application-template-1@0.1.0 lint
-> next lint
-
-✔ No ESLint warnings or errors
-$
 ```
 
 ## Walkthrough
@@ -240,9 +200,9 @@ By default, each user only sees the Stuff that they have created. However, the s
 
 #### Landing page
 
-When you retrieve the app at http://localhost:3000, this is what should be displayed:
+When the application is opened, a landing page will explain all of the capabilities of the program.
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/landing-page.png)
+![](doc\landing.png)
 
 The next step is to use the Login menu to either Login to an existing account or register a new account.
 
@@ -250,137 +210,47 @@ The next step is to use the Login menu to either Login to an existing account or
 
 Clicking on the Login link, then on the Sign In menu item displays this page:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/signin-page.png)
+![](doc\Screenshot 2025-04-06 023729.png)
 
 #### Register page
 
 Alternatively, clicking on the Login link, then on the Sign Up menu item displays this page:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/register-page.png)
+![](doc\Screenshot 2025-04-06 023657.png)
 
 #### Landing (after Login) page, non-Admin user
 
 Once you log in (either to an existing account or by creating a new one), the navbar changes as follows:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/landing-after-login-page.png)
+![](doc\Screenshot 2025-04-06 023843.png)
 
-You can now add new Stuff documents, and list the Stuff you have created. Note you cannot see any Stuff created by other users.
+You can now add new contacts, list contacts, as well as add notes to each contact. 
 
-#### Add Stuff page
+#### Add Contact page
 
-After logging in, here is the page that allows you to add new Stuff:
+After logging in, here is the page that allows you to add new Contacts:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/add-stuff-page.png)
+![](doc\Screenshot 2025-04-06 023755.png)
 
-#### List Stuff page
+#### List Contact page
 
-After logging in, here is the page that allows you to list all the Stuff you have created:
+After logging in, here is the page that allows you to list all the Contacts you have created:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/list-stuff-page.png)
+![](doc\Screenshot 2025-04-06 024442.png)
 
-You click the "Edit" link to go to the Edit Stuff page, shown next.
+You click the "Edit" link to go to the Edit Contact page, shown next.
 
-#### Edit Stuff page
+#### Edit Contact page
 
 After clicking on the "Edit" link associated with an item, this page displays that allows you to change and save it:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/edit-stuff-page.png)
+![](doc\image.png)
 
-#### Landing (after Login), Admin user
-
-You can define an "admin" user in the settings.json file. This user, after logging in, gets a special entry in the navbar:
-
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/admin-landing-page.png)
 
 #### Admin page (list all users stuff)
 
-To provide a simple example of a "super power" for Admin users, the Admin page lists all of the Stuff by all of the users:
+To provide a simple example of a "super power" for Admin users, the Admin page lists all of the Contacts by all of the users:
 
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/admin-list-stuff-page.png)
+![](doc\Screenshot 2025-04-06 023940.png)
 
 Note that non-admin users cannot get to this page, even if they type in the URL by hand.
-
-### Tables
-
-The application implements two tables "Stuff" and "User". Each Stuff row has the following columns: id, name, quantity, condition, and owner. The User table has the following columns: id, email, password (hashed using bcrypt), role.
-
-The Stuff and User models are defined in [prisma/schema.prisma](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/prisma/schema.prisma).
-
-The tables are initialized in [prisma/seed.ts](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/prisma/seed.ts) using the command `npx prisma db seed`.
-
-### CSS
-
-The application uses the [React implementation of Bootstrap 5](https://react-bootstrap.github.io/). You can adjust the theme by editing the `src/app/globals.css` file. To change the theme override the Bootstrap 5 CSS variables.
-
-```css
-/* Change bootstrap variable values.
- See https://getbootstrap.com/docs/5.2/customize/css-variables/
- */
-body {
-  --bs-light-rgb: 236, 236, 236;
-}
-
-/* Define custom styles */
-.gray-background {
-  background-color: var(--bs-gray-200);
-  color: var(--bs-dark);
-  padding-top: 10px;
-  padding-bottom: 20px;
-}
-```
-
-### Routing
-
-For display and navigation among its four pages, the application uses [Next.js App Router](https://nextjs.org/docs/app/building-your-application/routing).
-
-Routing is defined by the directory structure.
-
-### Authentication
-
-For authentication, the application uses the NextAuth package.
-
-When the database is seeded, a settings file (such as [config/settings.development.json](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/config/settings.development.json)) is used to create users and stuff in the PostgreSQL database. That will lead to a default accounts being created.
-
-The application allows users to register and create new accounts at any time.
-
-### Authorization
-
-Only logged in users can manipulate Stuff items (but any registered user can manipulate any Stuff item, even if they weren't the user that created it.)
-
-### Configuration
-
-The [config](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/config) directory is intended to hold settings files. The repository contains one file: [config/settings.development.json](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/config/settings.development.json).
-
-The [.gitignore](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/.gitignore) file prevents a file named settings.production.json from being committed to the repository. So, if you are deploying the application, you can put settings in a file named settings.production.json and it will not be committed.
-
-### Quality Assurance
-
-#### ESLint
-
-The application includes a [.eslintrc.json](https://github.com/ics-software-engineering/nextjs-application-template/blob/main/.eslintrc.json) file to define the coding style adhered to in this application. You can invoke ESLint from the command line as follows:
-
-```
-[~/nextjs-application-template]-> npm run lint
-
-> nextjs-application-template-1@0.1.0 lint
-> next lint
-
-✔ No ESLint warnings or errors
-[~/nextjs-application-template]->
-```
-
-ESLint should run without generating any errors.
-
-It's significantly easier to do development with ESLint integrated directly into your IDE (such as VSCode).
-
-<!--
-## Screencasts
-
-For more information about this system, please watch one or more of the following screencasts. Note that the current source code might differ slightly from the code in these screencasts, but the changes should be very minor.
-
-- [Walkthrough of system user interface (6 min)](https://youtu.be/48xu1hrqUi8)
-- [Data and accounts structure and initialization (18 min)](https://youtu.be/HZRjwrVBWp4)
-- [Navigation, routing, pages, components (34 min)](https://youtu.be/XztTdHpv6Jw)
-- [Forms (32 min)](https://youtu.be/8FyWR3gUGCM)
-- [Authorization, authentication, and roles (12 min)](https://youtu.be/9HX5vuXTlvA)
--->
